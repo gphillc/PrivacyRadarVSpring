@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".activities.main.MainActivity">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_title">
+
+    </include>
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:background="?attr/colorBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/main_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/daily_weekly_button_view"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <RadioButton
+                    android:id="@+id/radio0"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/radio_flat_selector"
+                    android:button="@android:color/transparent"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/dashboard_day"
+                    android:textColor="@color/radiocolor"
+                    android:textSize="20sp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <RadioButton
+                    android:id="@+id/radio1"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/radio_flat_selector"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/dashboard_week"
+                    android:textColor="@color/radiocolor"
+                    android:textSize="20sp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/text_view_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:ems="10"
+                android:textSize="20dp"
+                android:inputType="textPersonName"
+                android:text="Date"
+                android:textColor="?attr/colorIcon"/>
+
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pie_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="212dp"
+                    android:contextClickable="true"
+                    />
+
+
+            <View
+                android:id="@+id/view_settings"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:alpha="0.3"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="?attr/colorSecondaryText" />
+
+            <LinearLayout
+                android:id="@+id/ly_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                android:background="@drawable/permission_background">
+
+                <rk.android.app.privacydashboard.views.PermissionView
+                    android:id="@+id/permission_location_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:textTitle="@string/settings_location"
+                    app:textInfo="@string/settings_location_info"
+                    app:imageIcon="@drawable/settings_location"
+                    app:tintColor="?attr/colorPrimary"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_location_setting"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="68dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/settings_location_button"
+                    android:textColor="?attr/colorBackground"
+                    app:backgroundTint="?attr/colorPrimary"
+                    android:textAllCaps="false"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_accessibility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                android:background="@drawable/permission_background">
+
+                <rk.android.app.privacydashboard.views.PermissionView
+                    android:id="@+id/permission_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:textTitle="@string/settings_accessibility"
+                    app:textInfo="@string/settings_accessibility_info"
+                    app:imageIcon="@drawable/settings_accessibility"
+                    app:tintColor="?attr/colorPrimary"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_access_setting"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="68dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/settings_accessibility_button"
+                    android:textColor="?attr/colorBackground"
+                    app:backgroundTint="?attr/colorPrimary"
+                    android:textAllCaps="false" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:alpha="0.3"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="?attr/colorSecondaryText" />
+
+            <rk.android.app.privacydashboard.views.PermissionView
+                android:id="@+id/permission_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:textTitle="@string/permission_location"
+                app:textInfo="@string/permission_info"
+                app:imageIcon="@drawable/icon_location"/>
+
+            <rk.android.app.privacydashboard.views.PermissionView
+                android:id="@+id/permission_camera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:textTitle="@string/permission_camera"
+                app:textInfo="@string/permission_info"
+                app:imageIcon="@drawable/icon_camera"/>
+
+            <rk.android.app.privacydashboard.views.PermissionView
+                android:id="@+id/permission_microphone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:textTitle="@string/permission_microphone"
+                app:textInfo="@string/permission_info"
+                app:imageIcon="@drawable/icon_microphone"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:alpha="0.3"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="?attr/colorSecondaryText"/>
+
+            <rk.android.app.privacydashboard.views.PermissionView
+                android:id="@+id/settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:textTitle="@string/settings_title"
+                app:textInfo="@string/settings_info"
+                app:imageIcon="@drawable/icon_settings"/>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:alpha="0.3"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="?attr/colorSecondaryText" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/bold"
+                        android:textColor="?attr/colorSecondaryText"
+                        android:text="@string/profile_made_by"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/groupText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="50dp"
+                        android:fontFamily="@font/regular"
+                        android:textColor="?attr/colorSecondaryText"
+                        android:text="@string/profile_version"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
