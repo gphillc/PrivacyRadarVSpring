@@ -70,6 +70,25 @@ public class Utils {
         }
     }
 
+    public static void openAccountSettings(Context context) {
+        Bundle bundle = ActivityOptions.makeCustomAnimation(context, R.anim.slide_in_right, R.anim.slide_out_left).toBundle();
+        Intent intent;
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
+            intent = new Intent(Settings.ACTION_PRIVACY_SETTINGS);
+        }else {
+            intent = new Intent(Intent.ACTION_MAIN)
+                    .setComponent(new ComponentName("com.android.settings",
+                            "com.android.settings.Settings$AppAndNotificationDashboardActivity"));
+        }
+        if (intent.resolveActivity(context.getPackageManager()) != null) {
+            try {
+                context.startActivity(intent, bundle);
+            }catch (Exception ignored){
+                context.startActivity(new Intent(Settings.ACTION_SETTINGS));
+            }
+        }
+    }
+
     public static void openPermissionLog(Context context, String permission){
         Bundle bundle = ActivityOptions.makeCustomAnimation(context, R.anim.slide_in_right, R.anim.slide_out_left).toBundle();
         Intent i = new Intent(context, LogsActivity.class);
@@ -151,12 +170,12 @@ public class Utils {
     public static String getDateFromTimestamp(Context context, long timestamp){
 
         Calendar calendar = Calendar.getInstance();
-        String today = DateFormat.format("dd MMM", calendar.getTimeInMillis()).toString();
+        String today = DateFormat.format("MMM dd", calendar.getTimeInMillis()).toString();
 
         calendar.add(Calendar.DATE,-1);
         String yesterday = DateFormat.format("dd MMM", calendar.getTimeInMillis()).toString();
 
-        String date = DateFormat.format("dd MMM", new Date(timestamp)).toString();
+        String date = DateFormat.format("MMM dd", new Date(timestamp)).toString();
         if (today.equals(date)) {
             return context.getString(R.string.log_today);
         }

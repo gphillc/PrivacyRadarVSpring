@@ -6,82 +6,85 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_margin="30dp"
-        android:background="@drawable/dialog_background"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="?attr/colorSecondary">
 
         <TextView
             android:id="@+id/alertTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/medium"
-            android:text="@string/dialog_theme_title"
-            android:textColor="?attr/colorPrimaryText"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+            android:fontFamily="@font/medium"
+            android:text="@string/dialog_theme_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="?attr/colorPrimaryText" />
 
         <LinearLayout
             android:id="@+id/rl_limit"
-            android:layout_below="@id/alertTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_below="@id/alertTitle"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="16dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/radio_light"
-                android:text="@string/dialog_theme_light"
-                android:fontFamily="@font/regular"
-                android:padding="10dp"
-                android:background="@android:color/transparent"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:textColor="?attr/colorPrimaryText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/regular"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:padding="10dp"
+                android:text="@string/dialog_theme_light"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textColor="?attr/colorPrimaryText" />
 
 
             <RadioButton
                 android:id="@+id/radio_dark"
-                android:text="@string/dialog_theme_dark"
-                android:fontFamily="@font/regular"
-                android:padding="10dp"
-                android:background="@android:color/transparent"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:textColor="?attr/colorPrimaryText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/regular"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:padding="10dp"
+                android:text="@string/dialog_theme_dark"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textColor="?attr/colorPrimaryText" />
 
             <RadioButton
                 android:id="@+id/radio_system"
-                android:text="@string/dialog_theme_system"
-                android:fontFamily="@font/regular"
-                android:padding="10dp"
-                android:background="@android:color/transparent"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:textColor="?attr/colorPrimaryText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/regular"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:padding="10dp"
+                android:text="@string/dialog_theme_system"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textColor="?attr/colorPrimaryText" />
 
             <RadioButton
                 android:id="@+id/radio_battery"
-                android:text="@string/dialog_theme_battery"
-                android:fontFamily="@font/regular"
-                android:padding="10dp"
-                android:background="@android:color/transparent"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:textColor="?attr/colorPrimaryText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/regular"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:padding="10dp"
+                android:text="@string/dialog_theme_battery"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textColor="?attr/colorPrimaryText" />
 
         </LinearLayout>
 

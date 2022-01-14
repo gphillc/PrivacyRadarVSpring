@@ -26,11 +26,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import rk.android.app.privacydashboard.BuildConfig;
 import rk.android.app.privacydashboard.R;
-import rk.android.app.privacydashboard.activities.donation.DonationActivity;
 import rk.android.app.privacydashboard.activities.log.database.LogsRepository;
 import rk.android.app.privacydashboard.activities.settings.SettingsActivity;
+import rk.android.app.privacydashboard.activities.settings.EditProfileActivity;
 import rk.android.app.privacydashboard.constant.Constants;
 import rk.android.app.privacydashboard.databinding.ActivityMainBinding;
 import rk.android.app.privacydashboard.manager.PreferenceManager;
@@ -52,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
     TextView text_view_date;
     CalendarView expandableCalendarView;
 
-    String date = "01-Jan-2021";
+    String date = "01-Jan-2001";
+    String dateWeek = "01/01/2021-01/07/2021";
 
     Bundle bundle;
 
@@ -84,12 +84,15 @@ public class MainActivity extends AppCompatActivity {
         textViewDate.setText(currentDate);
 
 
+
     }
 
     private void setupToolbar(){
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle(getString(R.string.app_name));
+        toolbar.setTitle(getString(R.string.app_user));
+        toolbar.setNavigationIcon(R.drawable.icon_user);
+        toolbar.setNavigationOnClickListener(view -> startActivity(new Intent(context, EditProfileActivity.class), bundle));
 
         binding.scrollView.setOnScrollChangeListener((View.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
             if (binding.scrollView.canScrollVertically(Constants.SCROLL_DIRECTION_UP)){
@@ -109,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     private void initPieChart(){
 
         binding.pieChart.setDrawCenterText(true);
-        binding.pieChart.setCenterText(getString(R.id.text_view_date));
+        binding.pieChart.setCenterText(date);
         binding.pieChart.setCenterTextColor(Utils.getAttrColor(context,R.attr.colorIcon));
         binding.pieChart.setCenterTextTypeface(ResourcesCompat.getFont(this, R.font.medium));
         binding.pieChart.setCenterTextSize(16f);
@@ -130,8 +133,17 @@ public class MainActivity extends AppCompatActivity {
         binding.pieChart.setExtraTopOffset(8f);
         binding.pieChart.setExtraBottomOffset(8f);
         binding.pieChart.setDrawRoundedSlices(false);
+        binding.pieChart.setOnClickListener(view -> startActivity(new Intent(context, CalendarActivity.class), bundle));
+
 
     }
+
+    private String getString(String aString) {
+        String packageName = getPackageName();
+        int resId = getResources().getIdentifier(aString, "string", packageName);
+        return getString(resId);
+    }
+
 
     private void initOnClickListener(){
 
@@ -150,8 +162,9 @@ public class MainActivity extends AppCompatActivity {
 
         binding.settings.setOnClickListener(view -> startActivity(new Intent(context, SettingsActivity.class), bundle));
 
-        
+        binding.pieChart.setOnClickListener(view -> startActivity(new Intent(context, CalendarActivity.class), bundle));
 
+        binding.textViewDate.setOnClickListener(view -> startActivity(new Intent(context, CalendarActivity.class), bundle));
 
     }
 

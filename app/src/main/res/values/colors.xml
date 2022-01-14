@@ -7,20 +7,21 @@
 
     <!--Light Theme-->
     <color name="lightPrimary">#CD0955</color>
-    <color name="lightSecondary">#468189</color>
+    <color name="lightSecondary">#1C6E8C</color>
     <color name="lightPrimaryText">#202020</color>
     <color name="lightSecondaryText">#9E9E9E</color>
     <color name="lightBackground">#FFFFFF</color>
     <color name="lightCardBackground">#000000</color>
     <color name="lightIcon">#CD0955</color>
+    <color name="lightSecondaryBackup">#468189</color>
 
     <color name="lightCamera">#40C4FF</color>
     <color name="lightMicrophone">#FFCC80</color>
     <color name="lightLocation">#A5D6A7</color>
 
     <!--Dark Theme-->
-    <color name="darkPrimary">#bef67a</color>
-    <color name="darkSecondary">#ffc246</color>
+    <color name="darkPrimary">#CD0955</color>
+    <color name="darkSecondary">#1C6E8C</color>
     <color name="darkPrimaryText">#E8EAED</color>
     <color name="darkSecondaryText">#9AA0A6</color>
     <color name="darkBackground">#000000</color>

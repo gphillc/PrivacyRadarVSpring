@@ -60,6 +60,9 @@
                 android:name="android.accessibilityservice"
                 android:resource="@xml/privacy_service" />
         </service>
+
+        <activity android:name=".activities.main.CalendarActivity"/>
+        <activity android:name=".activities.settings.EditProfileActivity"/>
         
     </application>
 </manifest>

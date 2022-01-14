@@ -2,7 +2,9 @@ package rk.android.app.privacydashboard.util;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.net.wifi.p2p.WifiP2pManager;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.github.mikephil.charting.data.PieData;
@@ -14,9 +16,10 @@ import java.util.ArrayList;
 
 import rk.android.app.privacydashboard.R;
 
-public class PieCharts {
+public class PieCharts extends AppCompatActivity {
 
     public static PieData getData(Context context, ArrayList<PieEntry> entries,ArrayList<Integer> colors){
+
         PieDataSet dataSet = new PieDataSet(entries,context.getString(R.string.chart_title));
         dataSet.setDrawIcons(true);
         dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
@@ -38,5 +41,7 @@ public class PieCharts {
 
         return data;
     }
+
+
 
 }

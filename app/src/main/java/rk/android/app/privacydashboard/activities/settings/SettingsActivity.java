@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat;
 
 import rk.android.app.privacydashboard.BuildConfig;
 import rk.android.app.privacydashboard.R;
+import rk.android.app.privacydashboard.activities.log.LogsActivity;
 import rk.android.app.privacydashboard.activities.settings.excluded.ExcludeActivity;
 import rk.android.app.privacydashboard.activities.settings.indicator.IndicatorActivity;
 import rk.android.app.privacydashboard.activities.settings.notification.NotificationActivity;
@@ -26,6 +27,7 @@ import rk.android.app.privacydashboard.service.PrivacyService;
 import rk.android.app.privacydashboard.util.Dialogs;
 import rk.android.app.privacydashboard.util.Permissions;
 import rk.android.app.privacydashboard.util.Utils;
+
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -49,6 +51,7 @@ public class SettingsActivity extends AppCompatActivity {
         setupToolbar();
         initValues();
         initOnClickListeners();
+        Bundle bundle;
 
     }
 
@@ -184,11 +187,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         binding.settingsRelease.setOnClickListener(view -> Dialogs.showWhatsNewDialog(context,getLayoutInflater(),preferenceManager,true));
 
-        binding.settingsGithub.setOnClickListener(view -> Utils.openLink(context, Constants.LINK_GITHUB));
 
-        binding.settingsTelegram.setOnClickListener(view -> Utils.openLink(context, Constants.LINK_TELEGRAM));
-
-        binding.settingsTwitter.setOnClickListener(view -> Utils.openLink(context,Constants.LINK_TWITTER));
+        binding.activityProfile.setOnClickListener(view -> startActivity(new Intent(context, LogsActivity.class)));
 
     }
 

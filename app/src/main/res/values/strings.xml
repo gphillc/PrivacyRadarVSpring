@@ -9,8 +9,8 @@
     <string name="permission_app">Telegram</string>
 
     <string name="app_name" translatable="false">Privacy Radar</string>
-    <string name="app_name_colored" translatable="false">"<font color='#8bc34a'>Privacy Dashboard</font></string>
-    <string name="app_package" translatable="false">rk.android.privacydashboard</string>
+    <string name="app_name_colored" translatable="false">"<font color='#8bc34a'>Privacy Radar</font></string>
+    <string name="app_package" translatable="false">rk.android.privacyradar</string>
     <string name="image_descriptions" translatable="false"> </string>
 
     <string name="app_info">ECE 484 Group 22</string>
@@ -22,10 +22,10 @@
     <string name="profile_contact">Contact</string>
 
     <!--Notification Service-->
-    <string name="service_name">Privacy Dashboard Service</string>
+    <string name="service_name">Privacy Radar Service</string>
     <string name="service_desc">This permission is required to show privacy indicators and to log camera, microphone and location usage.\n\nAll logs are stored locally on your device.</string>
-    <string name="service_summary">Turn this on to enable privacy dashboard</string>
-    <string name="notification_desc">Privacy Dashboard is running in the background</string>
+    <string name="service_summary">Turn this on to enable privacy radar</string>
+    <string name="notification_desc">Privacy Radar is running in the background</string>
     <string name="notification_hide">Click here to hide notification</string>
     <string name="notification_usage_title">Permission Usage Notification</string>
     <string name="notification_usage_desc">This notification will appear when camera, microphone and location permission is being used.</string>
@@ -187,7 +187,7 @@
 
     <!--Pie chart-->
     <string name="chart_title">Log overview</string>
-    <string name="chart_center_text">currentDate</string>
+    <string name="chart_center_text">Today</string>
     
     <!--Permission history-->
     <string name="log_title">Permission history</string>
@@ -244,6 +244,7 @@
 
     <string name="dashboard_day" translatable="false">Day</string>
     <string name="dashboard_week" translatable="false">Week</string>
-    <string name="app_user" translatable="false">Grant Clark</string>
+    <string name="app_user" translatable="false">User Name</string>
+    <string name="calender_title" translatable="false">Calender</string>
 
 </resources>

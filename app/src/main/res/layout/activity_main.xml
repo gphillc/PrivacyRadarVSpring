@@ -11,11 +11,9 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar_title">
+        layout="@layout/toolbar">
 
     </include>
-
-
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
@@ -87,17 +85,19 @@
                 android:ems="10"
                 android:textSize="20dp"
                 android:inputType="textPersonName"
-                android:text="Date"
-                android:textColor="?attr/colorIcon"/>
 
+                android:textColor="?attr/colorIcon"
 
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/pie_chart"
-                    android:layout_width="match_parent"
-                    android:layout_height="212dp"
-                    android:contextClickable="true"
-                    />
+                />
 
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pie_chart"
+                android:layout_width="match_parent"
+                android:layout_height="212dp"
+                android:clickable="true"
+                android:focusable="true"
+                >
+            </com.github.mikephil.charting.charts.PieChart>
 
             <View
                 android:id="@+id/view_settings"
@@ -250,11 +250,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginBottom="50dp"
+                        android:layout_marginBottom="5dp"
                         android:fontFamily="@font/regular"
                         android:textColor="?attr/colorSecondaryText"
                         android:text="@string/profile_version"
                         android:textSize="12sp" />
+
+                    <ImageView
+                        android:id="@+id/main_sponsor"
+                        android:layout_width="80dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="20dp"
+                        android:src="@drawable/cisco_logo"
+                        />
 
                 </LinearLayout>
 

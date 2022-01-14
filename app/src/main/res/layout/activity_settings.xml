@@ -243,7 +243,8 @@
                 android:alpha="0.3"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="?attr/colorSecondaryText" />
+                android:background="?attr/colorSecondaryText"
+                android:visibility="gone"/>
 
             <rk.android.app.privacydashboard.views.SettingsView
                 android:id="@+id/settings_release"
@@ -255,43 +256,22 @@
                 app:settings_switch_visibility="8"
                 android:visibility="gone"/>
 
-            <rk.android.app.privacydashboard.views.SettingsView
-                android:id="@+id/settings_github"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:settings_title="@string/settings_github"
-                app:settings_info="@string/settings_github_info"
-                app:settings_icon="@drawable/profile_github"
-                app:settings_switch_visibility="8"
-                android:visibility="gone"/>
-
-            <rk.android.app.privacydashboard.views.SettingsView
-                android:id="@+id/settings_telegram"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:settings_title="@string/settings_telegram"
-                app:settings_info="@string/settings_telegram_info"
-                app:settings_icon="@drawable/profile_telegram"
-                app:settings_switch_visibility="8"
-                android:visibility="gone"/>
-
-            <rk.android.app.privacydashboard.views.SettingsView
-                android:id="@+id/settings_twitter"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:settings_title="@string/settings_twitter"
-                app:settings_info="@string/settings_twitter_info"
-                app:settings_icon="@drawable/profile_twitter"
-                app:settings_switch_visibility="8"
-                android:visibility="gone"/>
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.2dp"
                 android:alpha="0.3"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginBottom="8dp"
-                android:background="?attr/colorSecondaryText" />
+                android:background="?attr/colorSecondaryText"
+                android:visibility="gone"/>
+            <rk.android.app.privacydashboard.views.PermissionView
+                android:id="@+id/activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:textTitle="Profile"
+                app:textInfo="Edit Username and Profile Picture"
+                app:imageIcon="@drawable/icon_user"
+                android:visibility="gone"/>
 
         </LinearLayout>
 

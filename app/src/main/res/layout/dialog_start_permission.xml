@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_margin="30dp"
-        android:background="@drawable/dialog_background"
+        android:background="?attr/colorSecondary"
         android:layout_height="wrap_content">
 
         <TextView

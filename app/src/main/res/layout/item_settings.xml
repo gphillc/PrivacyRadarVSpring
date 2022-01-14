@@ -35,15 +35,15 @@
 
     <TextView
         android:id="@+id/text_info"
-        android:layout_below="@id/text_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/text_title"
         android:layout_toStartOf="@id/switch_state"
         android:layout_toEndOf="@id/image_icon"
-        android:text="@string/settings_accessibility_info_short"
         android:fontFamily="@font/medium"
-        android:textColor="?attr/colorIcon"
-        android:textSize="13sp"/>
+        android:text="@string/settings_accessibility_info_short"
+        android:textColor="?attr/colorSecondary"
+        android:textSize="13sp" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/switch_state"
