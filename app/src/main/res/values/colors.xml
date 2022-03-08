@@ -6,13 +6,13 @@
     <color name="overlay_icon">#0D280C</color>
 
     <!--Light Theme-->
-    <color name="lightPrimary">#CD0955</color>
-    <color name="lightSecondary">#1C6E8C</color>
+    <color name="lightPrimary">#000000</color>
+    <color name="lightSecondary">#66717E</color>
     <color name="lightPrimaryText">#202020</color>
     <color name="lightSecondaryText">#9E9E9E</color>
     <color name="lightBackground">#FFFFFF</color>
     <color name="lightCardBackground">#000000</color>
-    <color name="lightIcon">#CD0955</color>
+    <color name="lightIcon">#000000</color>
     <color name="lightSecondaryBackup">#468189</color>
 
     <color name="lightCamera">#40C4FF</color>
@@ -31,5 +31,8 @@
     <color name="darkCamera">#0288D1</color>
     <color name="darkMicrophone">#F57C00</color>
     <color name="darkLocation">#388E3C</color>
+    <color name="transparent">#00000000</color>
+    <color name="figmaToolbar">#571d49</color>
+    <color name="tan">#F8F4C5</color>
 
 </resources>

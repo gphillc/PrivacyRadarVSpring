@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import rk.android.app.privacydashboard.R;
+import rk.android.app.privacydashboard.activities.intro.IntroActivity;
 import rk.android.app.privacydashboard.activities.main.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
@@ -23,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
 
             Bundle bundle = ActivityOptions.makeCustomAnimation(SplashActivity.this,
                     android.R.anim.fade_in,android.R.anim.fade_out).toBundle();
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
             startActivity(intent,bundle);
             finish();
 

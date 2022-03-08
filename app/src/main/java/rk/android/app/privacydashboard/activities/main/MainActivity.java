@@ -27,9 +27,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import rk.android.app.privacydashboard.R;
+import rk.android.app.privacydashboard.activities.account.AccountActivity;
 import rk.android.app.privacydashboard.activities.log.database.LogsRepository;
-import rk.android.app.privacydashboard.activities.settings.SettingsActivity;
-import rk.android.app.privacydashboard.activities.settings.EditProfileActivity;
 import rk.android.app.privacydashboard.constant.Constants;
 import rk.android.app.privacydashboard.databinding.ActivityMainBinding;
 import rk.android.app.privacydashboard.manager.PreferenceManager;
@@ -51,10 +50,11 @@ public class MainActivity extends AppCompatActivity {
     TextView text_view_date;
     CalendarView expandableCalendarView;
 
-    String date = "01-Jan-2001";
+    String date = "Jan 01, 2022";
     String dateWeek = "01/01/2021-01/07/2021";
 
     Bundle bundle;
+    Intent incomingIntent = getIntent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +63,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         context = MainActivity.this;
-        preferenceManager =  new PreferenceManager(getApplicationContext());
+        preferenceManager = new PreferenceManager(getApplicationContext());
         bundle = ActivityOptions.makeCustomAnimation(context, R.anim.slide_in_right, R.anim.slide_out_left).toBundle();
         getWindow().setBackgroundDrawable(null);
         logsRepository = new LogsRepository(getApplication());
-        date = Utils.getDateFromTimestamp(Calendar.getInstance().getTimeInMillis());
+
 
         setupToolbar();
         initUI();
+        initDate();
         initPieChart();
         initOnClickListener();
         initValues();
@@ -87,44 +88,45 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setupToolbar(){
+    private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getString(R.string.app_user));
         toolbar.setNavigationIcon(R.drawable.icon_user);
-        toolbar.setNavigationOnClickListener(view -> startActivity(new Intent(context, EditProfileActivity.class), bundle));
+        toolbar.setNavigationOnClickListener(view -> startActivity(new Intent(context, AccountActivity.class), bundle));
 
         binding.scrollView.setOnScrollChangeListener((View.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
-            if (binding.scrollView.canScrollVertically(Constants.SCROLL_DIRECTION_UP)){
+            if (binding.scrollView.canScrollVertically(Constants.SCROLL_DIRECTION_UP)) {
                 toolbar.setElevation(Constants.TOOLBAR_SCROLL_ELEVATION);
-            }else{
+            } else {
                 toolbar.setElevation(Constants.TOOLBAR_DEFAULT_ELEVATION);
             }
         });
     }
 
-    private void initUI(){
+    private void initUI() {
 
-        Dialogs.showWhatsNewDialog(context,getLayoutInflater(),preferenceManager,false);
+        Dialogs.showWhatsNewDialog(context, getLayoutInflater(), preferenceManager, false);
 
     }
 
-    private void initPieChart(){
+
+    private void initPieChart() {
 
         binding.pieChart.setDrawCenterText(true);
         binding.pieChart.setCenterText(date);
-        binding.pieChart.setCenterTextColor(Utils.getAttrColor(context,R.attr.colorIcon));
+        binding.pieChart.setCenterTextColor(Utils.getAttrColor(context, R.attr.colorIcon));
         binding.pieChart.setCenterTextTypeface(ResourcesCompat.getFont(this, R.font.medium));
         binding.pieChart.setCenterTextSize(16f);
         binding.pieChart.setDrawHoleEnabled(true);
-        binding.pieChart.setHoleColor(Utils.getAttrColor(context,R.attr.colorBackground));
+        binding.pieChart.setHoleColor(Utils.getAttrColor(context, R.attr.colorBackground));
         binding.pieChart.setTransparentCircleAlpha(0);
         binding.pieChart.setHoleRadius(90f);
         binding.pieChart.setRotationAngle(0);
         binding.pieChart.setRotationEnabled(false);
         binding.pieChart.setHighlightPerTapEnabled(false);
         //chart.setOnChartValueSelectedListener(this);
-        binding.pieChart.setEntryLabelColor(Utils.getAttrColor(context,R.attr.colorIcon));
+        binding.pieChart.setEntryLabelColor(Utils.getAttrColor(context, R.attr.colorIcon));
         binding.pieChart.setEntryLabelTypeface(ResourcesCompat.getFont(this, R.font.medium));
         binding.pieChart.setEntryLabelTextSize(15f);
         binding.pieChart.getDescription().setEnabled(false);
@@ -145,22 +147,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void initOnClickListener(){
+    private void initOnClickListener() {
 
         binding.buttonAccessSetting.setOnClickListener(view -> {
-            startActivity(new Intent("android.settings.ACCESSIBILITY_SETTINGS"),bundle);
-            Toast.makeText(context,getString(R.string.settings_accessibility_on),Toast.LENGTH_SHORT).show();
+            startActivity(new Intent("android.settings.ACCESSIBILITY_SETTINGS"), bundle);
+            Toast.makeText(context, getString(R.string.settings_accessibility_on), Toast.LENGTH_SHORT).show();
         });
 
         binding.buttonLocationSetting.setOnClickListener(view -> askPermission());
 
-        binding.permissionLocation.setOnClickListener(view -> Utils.openHistoryActivity(context,Constants.PERMISSION_LOCATION));
+        binding.permissionLocation.setOnClickListener(view -> Utils.openHistoryActivity(context, Constants.PERMISSION_LOCATION));
 
-        binding.permissionCamera.setOnClickListener(view -> Utils.openHistoryActivity(context,Constants.PERMISSION_CAMERA));
+        binding.permissionCamera.setOnClickListener(view -> Utils.openHistoryActivity(context, Constants.PERMISSION_CAMERA));
 
-        binding.permissionMicrophone.setOnClickListener(view -> Utils.openHistoryActivity(context,Constants.PERMISSION_MICROPHONE));
-
-        binding.settings.setOnClickListener(view -> startActivity(new Intent(context, SettingsActivity.class), bundle));
+        binding.permissionMicrophone.setOnClickListener(view -> Utils.openHistoryActivity(context, Constants.PERMISSION_MICROPHONE));
 
         binding.pieChart.setOnClickListener(view -> startActivity(new Intent(context, CalendarActivity.class), bundle));
 
@@ -168,33 +168,42 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void initValues(){
+    private void initDate() {
+        if(expandableCalendarView == null){
+            date = Utils.getDateFromTimestamp(Calendar.getInstance().getTimeInMillis());
+        }
+        else{
+            date = incomingIntent.getStringExtra("date");
+        }
+    }
+
+    private void initValues() {
 
         List<Integer> logs = new ArrayList<>();
         ArrayList<PieEntry> entries = new ArrayList<>();
         ArrayList<Integer> colors = new ArrayList<>();
 
-        logs.add(logsRepository.getLogsCount(Constants.PERMISSION_LOCATION,date));
-        logs.add(logsRepository.getLogsCount(Constants.PERMISSION_CAMERA,date));
-        logs.add(logsRepository.getLogsCount(Constants.PERMISSION_MICROPHONE,date));
+        logs.add(logsRepository.getLogsCount(Constants.PERMISSION_LOCATION, date));
+        logs.add(logsRepository.getLogsCount(Constants.PERMISSION_CAMERA, date));
+        logs.add(logsRepository.getLogsCount(Constants.PERMISSION_MICROPHONE, date));
 
-        for (int i = 0; i < logs.size(); i++){
-            if (logs.get(i) != 0){
+        for (int i = 0; i < logs.size(); i++) {
+            if (logs.get(i) != 0) {
                 entries.add(new PieEntry(logs.get(i), Permissions.getString(context, i)));
-                colors.add(Utils.getAttrColor(context,Permissions.getColor(i)));
+                colors.add(Utils.getAttrColor(context, Permissions.getColor(i)));
             }
         }
 
-        if (entries.size() == 0){
+        if (entries.size() == 0) {
             entries.add(new PieEntry(1, " "));
-            colors.add(Utils.getAttrColor(context,R.attr.colorCardBackground));
+            colors.add(Utils.getAttrColor(context, R.attr.colorCardBackground));
         }
 
-        binding.permissionLocation.setPermissionUsage(Permissions.getPermissionUsageInfo(context,logs.get(Constants.POSITION_LOCATION)));
-        binding.permissionCamera.setPermissionUsage(Permissions.getPermissionUsageInfo(context,logs.get(Constants.POSITION_CAMERA)));
-        binding.permissionMicrophone.setPermissionUsage(Permissions.getPermissionUsageInfo(context,logs.get(Constants.POSITION_MICROPHONE)));
+        binding.permissionLocation.setPermissionUsage(Permissions.getPermissionUsageInfo(context, logs.get(Constants.POSITION_LOCATION)));
+        binding.permissionCamera.setPermissionUsage(Permissions.getPermissionUsageInfo(context, logs.get(Constants.POSITION_CAMERA)));
+        binding.permissionMicrophone.setPermissionUsage(Permissions.getPermissionUsageInfo(context, logs.get(Constants.POSITION_MICROPHONE)));
 
-        binding.pieChart.setData(PieCharts.getData(context,entries,colors));
+        binding.pieChart.setData(PieCharts.getData(context, entries, colors));
         binding.pieChart.invalidate();
 
     }
@@ -218,15 +227,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu,menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_refresh){
+        if (item.getItemId() == R.id.action_refresh) {
             initValues();
-            Toast.makeText(context,getString(R.string.menu_refresh_info),Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, getString(R.string.menu_refresh_info), Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -237,16 +246,16 @@ public class MainActivity extends AppCompatActivity {
 
         binding.viewSettings.setVisibility(View.GONE);
 
-        if (Permissions.accessibilityPermission(context, PrivacyService.class)){
+        if (Permissions.accessibilityPermission(context, PrivacyService.class)) {
             binding.lyAccessibility.setVisibility(View.GONE);
-        }else {
+        } else {
             binding.lyAccessibility.setVisibility(View.VISIBLE);
             binding.viewSettings.setVisibility(View.VISIBLE);
         }
 
-        if (Permissions.checkLocation(context)){
+        if (Permissions.checkLocation(context)) {
             binding.lyLocation.setVisibility(View.GONE);
-        }else {
+        } else {
             binding.lyLocation.setVisibility(View.VISIBLE);
             binding.viewSettings.setVisibility(View.VISIBLE);
         }
@@ -254,6 +263,5 @@ public class MainActivity extends AppCompatActivity {
         checkForAccessibilityAndStart();
 
     }
-
 
 }

@@ -44,6 +44,7 @@
         <activity android:name=".activities.settings.notification.NotificationActivity"/>
 
         <activity android:name=".activities.settings.excluded.ExcludeActivity"/>
+
         <activity android:name=".activities.settings.excluded.ExcludedActivity"/>
 
         <activity android:name=".activities.donation.DonationActivity"/>
@@ -62,7 +63,16 @@
         </service>
 
         <activity android:name=".activities.main.CalendarActivity"/>
+
         <activity android:name=".activities.settings.EditProfileActivity"/>
-        
+
+        <activity android:name=".activities.account.LoginActivity"/>
+
+        <activity android:name=".activities.account.RegisterActivity"/>
+
+        <activity android:name=".activities.account.AccountActivity"/>
+
+        <activity android:name=".activities.intro.IntroActivity"/>
+
     </application>
 </manifest>

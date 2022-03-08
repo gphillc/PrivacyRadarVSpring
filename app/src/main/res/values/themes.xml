@@ -28,7 +28,7 @@
     </style>
 
     <style name="ToolBarStyle" parent="ThemeOverlay.MaterialComponents.Light">
-        <item name="android:textColorPrimary">?attr/colorPrimaryText</item>
+        <item name="android:textColorPrimary">?attr/colorBackground</item>
         <item name="fontFamily">@font/medium</item>
         <item name="android:itemTextAppearance">@style/menu_item</item>
     </style>

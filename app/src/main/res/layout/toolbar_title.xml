@@ -9,7 +9,8 @@
         android:id="@+id/toolbar_title"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/icon_user">
+        android:background="@drawable/icon_user"
+        android:tint="@color/lightBackground">
     </ImageButton>
 
     <TextView
@@ -21,7 +22,8 @@
         android:ellipsize="end"
         android:fontFamily="@font/bold"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:textColor="@color/lightBackground">
     </TextView>
 
 </androidx.appcompat.widget.Toolbar>
