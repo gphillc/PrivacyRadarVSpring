@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "701791152370",
+    "project_id": "privacy-radar",
+    "storage_bucket": "privacy-radar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701791152370:android:fd41efbdb2c6db7ca6886b",
+        "android_client_info": {
+          "package_name": "rk.android.app.privacydashboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "701791152370-472486rk79cs3j0rhprtpsvffnhgkcp4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8K5w7AYsQ7-LzUkBdKdsNastoNo02nQk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "701791152370-472486rk79cs3j0rhprtpsvffnhgkcp4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
