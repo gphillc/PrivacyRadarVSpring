@@ -208,6 +208,25 @@
                 app:textInfo="@string/permission_info"
                 app:imageIcon="@drawable/icon_microphone"/>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:alpha="0.3"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="#25000000"/>
+
+
+            <rk.android.app.privacydashboard.views.SettingsView
+                android:id="@+id/data_detective"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:settings_title="Data Detective"
+                app:settings_info="Work in Progress"
+                app:settings_icon="@drawable/icon_empty"
+                app:settings_switch_visibility="8"/>
+
 
         </LinearLayout>
 

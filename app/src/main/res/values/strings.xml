@@ -13,10 +13,10 @@
     <string name="app_package" translatable="false">rk.android.privacyradar</string>
     <string name="image_descriptions" translatable="false"> </string>
 
-    <string name="app_info">ECE 484 Group 22</string>
+    <string name="app_info">ECE 485 Group 22</string>
 
     <string name="profile_made_by" translatable="false">Made by Group 22</string>
-    <string name="profile_version">ECE 484 Fall 2021</string>
+    <string name="profile_version">ECE 485 Spring 2022</string>
     <string name="profile_github" translatable="false">Github</string>
     <string name="profile_donate">Donate</string>
     <string name="profile_contact">Contact</string>
@@ -246,5 +246,6 @@
     <string name="dashboard_week" translatable="false">Week</string>
     <string name="app_user" translatable="false">User Name</string>
     <string name="calender_title" translatable="false">Calender</string>
+    <string name="data_detective" translatable="false">Data Detective</string>
 
 </resources>

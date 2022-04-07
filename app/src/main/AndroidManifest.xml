@@ -74,5 +74,7 @@
 
         <activity android:name=".activities.intro.IntroActivity"/>
 
+        <activity android:name=".activities.main.DataDetectiveActivity"/>
+
     </application>
 </manifest>

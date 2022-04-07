@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     Bundle bundle;
     Intent incomingIntent = getIntent();
+    int score = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
         setupToolbar();
         initUI();
         initDate();
-        initPieChart();
         initOnClickListener();
         initValues();
+        initPieChart();
 
         Permissions.checkAutoStartRequirement(context, getLayoutInflater(), preferenceManager);
 
@@ -114,10 +115,10 @@ public class MainActivity extends AppCompatActivity {
     private void initPieChart() {
 
         binding.pieChart.setDrawCenterText(true);
-        binding.pieChart.setCenterText(date);
+        binding.pieChart.setCenterText(String.valueOf(score));
         binding.pieChart.setCenterTextColor(Utils.getAttrColor(context, R.attr.colorIcon));
         binding.pieChart.setCenterTextTypeface(ResourcesCompat.getFont(this, R.font.medium));
-        binding.pieChart.setCenterTextSize(16f);
+        binding.pieChart.setCenterTextSize(20f);
         binding.pieChart.setDrawHoleEnabled(true);
         binding.pieChart.setHoleColor(Utils.getAttrColor(context, R.attr.colorBackground));
         binding.pieChart.setTransparentCircleAlpha(0);
@@ -130,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         binding.pieChart.setEntryLabelTypeface(ResourcesCompat.getFont(this, R.font.medium));
         binding.pieChart.setEntryLabelTextSize(15f);
         binding.pieChart.getDescription().setEnabled(false);
-        binding.pieChart.getLegend().setEnabled(false);
+        binding.pieChart.getLegend().setEnabled(true);
         binding.pieChart.highlightValues(null);
         binding.pieChart.setExtraTopOffset(8f);
         binding.pieChart.setExtraBottomOffset(8f);
@@ -166,6 +167,8 @@ public class MainActivity extends AppCompatActivity {
 
         binding.textViewDate.setOnClickListener(view -> startActivity(new Intent(context, CalendarActivity.class), bundle));
 
+        binding.dataDetective.setOnClickListener(view -> startActivity(new Intent(context, DataDetectiveActivity.class), bundle));
+
     }
 
     private void initDate() {
@@ -178,6 +181,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initValues() {
+        score = 100;
+
+        int c = logsRepository.getLogsCount(Constants.PERMISSION_CAMERA, date);
+        int l = logsRepository.getLogsCount(Constants.PERMISSION_LOCATION, date);
+        int m = logsRepository.getLogsCount(Constants.PERMISSION_MICROPHONE, date);
+
+        score = score - m - l - c;
 
         List<Integer> logs = new ArrayList<>();
         ArrayList<PieEntry> entries = new ArrayList<>();
@@ -235,6 +245,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_refresh) {
             initValues();
+            initPieChart();
+
             Toast.makeText(context, getString(R.string.menu_refresh_info), Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
@@ -243,6 +255,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        initValues();
 
         binding.viewSettings.setVisibility(View.GONE);
 
