@@ -281,12 +281,17 @@ public class PrivacyService extends AccessibilityService {
         }
 
         boolean isAllowed = isAppAllowed(permission);
+        String permissions = permission;
+        String packageName = lastAppPackage;
+        long timeStart = Calendar.getInstance().getTimeInMillis();
 
         if (!isAllowed && state == Constants.STATE_OFF && !lastAppPackage.equals(BuildConfig.APPLICATION_ID)){
             if (!excludedRepository.isExcluded(lastAppPackage) || !preferenceManager.isPrivacyExcludeLogs()) {
                 Logs log = new Logs(Calendar.getInstance().getTimeInMillis(), lastAppPackage, permission, state, Utils.getDateFromTimestamp(Calendar.getInstance().getTimeInMillis()));
                 repository.insertLogs(log);
+
             }
+            long timeStop = Calendar.getInstance().getTimeInMillis();
             lastAppPackage = BuildConfig.APPLICATION_ID;
         }
 

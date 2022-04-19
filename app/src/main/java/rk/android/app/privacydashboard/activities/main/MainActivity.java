@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     Bundle bundle;
     Intent incomingIntent = getIntent();
-    int score = 100;
+    double score = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,9 +183,9 @@ public class MainActivity extends AppCompatActivity {
     private void initValues() {
         score = 100;
 
-        int c = logsRepository.getLogsCount(Constants.PERMISSION_CAMERA, date);
-        int l = logsRepository.getLogsCount(Constants.PERMISSION_LOCATION, date);
-        int m = logsRepository.getLogsCount(Constants.PERMISSION_MICROPHONE, date);
+        double c = logsRepository.getLogsCount(Constants.PERMISSION_CAMERA, date);
+        double l = logsRepository.getLogsCount(Constants.PERMISSION_LOCATION, date);
+        double m = logsRepository.getLogsCount(Constants.PERMISSION_MICROPHONE, date);
 
         score = score - m - l - c;
 

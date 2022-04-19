@@ -46,18 +46,18 @@
 
         <ImageView
             android:id="@+id/image_app"
-            android:contentDescription="@string/image_descriptions"
-            android:layout_toEndOf="@id/text_time"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="16dp"
+            android:layout_toEndOf="@id/text_time"
+            android:background="@mipmap/ic_launcher"
+            android:backgroundTint="?attr/colorBackground"
+            android:contentDescription="@string/image_descriptions"
             android:elevation="2dp"
             android:padding="6dp"
-            app:tint="?attr/colorPrimaryText"
-            android:backgroundTint="?attr/colorBackground"
-            android:background="@mipmap/ic_launcher"/>
+            app:tint="?attr/colorPrimaryText" />
 
         <TextView
             android:id="@+id/text_app_name"
@@ -77,19 +77,19 @@
 
         <TextView
             android:id="@+id/text_session"
-            android:layout_below="@id/text_app_name"
-            android:layout_toStartOf="@id/image_help"
-            android:layout_alignStart="@id/text_app_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="2dp"
+            android:layout_below="@id/text_app_name"
+            android:layout_alignStart="@id/text_app_name"
             android:layout_marginEnd="16dp"
-            android:text="@string/permission_info3"
-            android:maxLines="1"
+            android:layout_toStartOf="@id/image_help"
             android:ellipsize="end"
             android:fontFamily="@font/medium"
+            android:maxLines="1"
+            android:paddingTop="2dp"
+            android:text="@string/permission_info3"
             android:textColor="?attr/colorIcon"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
         <View
             android:id="@+id/view_vertical"

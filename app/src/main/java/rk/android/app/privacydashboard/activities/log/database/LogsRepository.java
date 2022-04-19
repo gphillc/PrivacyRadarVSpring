@@ -29,7 +29,9 @@ public class LogsRepository {
     }
 
     public LiveData<List<Logs>> getAllLogsForPermission(String permission) {
+        String str;
         liveLogs = logsDao.getAllLogsForPermission(permission);
+        str = liveLogs.toString();
         return liveLogs;
     }
 
