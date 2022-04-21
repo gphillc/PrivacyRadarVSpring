@@ -100,7 +100,7 @@ public class PrivacyService extends AccessibilityService {
             Notification notification = new NotificationCompat.Builder(this, Constants.NOTIFICATION_CHANNEL)
                     .setContentTitle(getString(R.string.notification_desc))
                     .setContentText(getString(R.string.notification_hide))
-                    .setSmallIcon(R.drawable.app_logo)
+                    .setSmallIcon(R.drawable.privacy_radar)
                     .setContentIntent(pendingIntent)
                     .build();
 

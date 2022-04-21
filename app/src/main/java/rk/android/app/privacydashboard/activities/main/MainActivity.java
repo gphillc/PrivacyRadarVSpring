@@ -109,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void initUI() {
 
-        Dialogs.showWhatsNewDialog(context, getLayoutInflater(), preferenceManager, false);
 
     }
 
@@ -294,6 +293,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         initValues();
+        initPieChart();
 
         binding.viewSettings.setVisibility(View.GONE);
 
