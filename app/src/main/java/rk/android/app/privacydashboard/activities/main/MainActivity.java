@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     Bundle bundle;
     Intent incomingIntent = getIntent();
-    double score = 100;
+    int score = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +74,10 @@ public class MainActivity extends AppCompatActivity {
         initUI();
         initDate();
         initOnClickListener();
+        //double Sum_Score(int l, int m, int c);
         initValues();
         initPieChart();
+
 
         Permissions.checkAutoStartRequirement(context, getLayoutInflater(), preferenceManager);
 
@@ -113,21 +115,20 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initPieChart() {
-
         binding.pieChart.setDrawCenterText(true);
         binding.pieChart.setCenterText(String.valueOf(score));
         binding.pieChart.setCenterTextColor(Utils.getAttrColor(context, R.attr.colorIcon));
         binding.pieChart.setCenterTextTypeface(ResourcesCompat.getFont(this, R.font.medium));
-        binding.pieChart.setCenterTextSize(20f);
+        binding.pieChart.setCenterTextSize(50f);
         binding.pieChart.setDrawHoleEnabled(true);
-        binding.pieChart.setHoleColor(Utils.getAttrColor(context, R.attr.colorBackground));
+        binding.pieChart.setHoleColor(getColor(R.color.tan));
         binding.pieChart.setTransparentCircleAlpha(0);
         binding.pieChart.setHoleRadius(90f);
         binding.pieChart.setRotationAngle(0);
         binding.pieChart.setRotationEnabled(false);
         binding.pieChart.setHighlightPerTapEnabled(false);
         //chart.setOnChartValueSelectedListener(this);
-        binding.pieChart.setEntryLabelColor(Utils.getAttrColor(context, R.attr.colorIcon));
+        binding.pieChart.setEntryLabelColor(getColor(R.color.lightBackground));
         binding.pieChart.setEntryLabelTypeface(ResourcesCompat.getFont(this, R.font.medium));
         binding.pieChart.setEntryLabelTextSize(15f);
         binding.pieChart.getDescription().setEnabled(false);
@@ -135,9 +136,7 @@ public class MainActivity extends AppCompatActivity {
         binding.pieChart.highlightValues(null);
         binding.pieChart.setExtraTopOffset(8f);
         binding.pieChart.setExtraBottomOffset(8f);
-        binding.pieChart.setDrawRoundedSlices(false);
-        binding.pieChart.setOnClickListener(view -> startActivity(new Intent(context, CalendarActivity.class), bundle));
-
+        binding.pieChart.setDrawRoundedSlices(true);
 
     }
 
@@ -179,15 +178,54 @@ public class MainActivity extends AppCompatActivity {
             date = incomingIntent.getStringExtra("date");
         }
     }
+    //scoring algorithm
+    int Sum_Score(int score, int l, int m, int c)
+    {
+        //double score =100;
+        // int l=5, m=4, c=2;
+        int l_counter_mod=0, l_counter_reg=0, m_counter_mod=0, m_counter_reg=0, c_counter_mod=0, c_counter_reg=0;
+
+//location algorithm
+        for (int j=0; j<=l; j++){
+            if(l%3==0&&l!=0){
+                l_counter_mod++;
+            }
+            else if(l%3!=0&&l!=0)
+                l_counter_reg++;
+        }
+//microphone algorithm
+        for (int j=0; j<=m; j++){
+            if(m%3==0&&m!=0){
+                m_counter_mod++;
+            }
+            else if(m%3!=0&&m!=0)
+                m_counter_reg++;
+        }
+//camera algorithm
+        for (int j=0; j<=c; j++){
+            if(c%3==0&&c!=0){
+                c_counter_mod++;
+            }
+            else if(c%3!=0&&c!=0)
+                c_counter_reg++;
+        }
+//sum up score
+        score = score-4*l_counter_mod-2*l_counter_reg-3*m_counter_mod-m_counter_reg-2*c_counter_mod-c_counter_reg;
+        return score;
+    }
 
     private void initValues() {
         score = 100;
 
-        double c = logsRepository.getLogsCount(Constants.PERMISSION_CAMERA, date);
-        double l = logsRepository.getLogsCount(Constants.PERMISSION_LOCATION, date);
-        double m = logsRepository.getLogsCount(Constants.PERMISSION_MICROPHONE, date);
+//location worth 1.5 points unless multiple of 3, then double
+        //mic worth 1 unless multiple of 3 then, double
+        //cam worth 0.5 unless multiple of 3 then, double
+        int c = logsRepository.getLogsCount(Constants.PERMISSION_CAMERA, date);
+        int l = logsRepository.getLogsCount(Constants.PERMISSION_LOCATION, date);
+        int m = logsRepository.getLogsCount(Constants.PERMISSION_MICROPHONE, date);
 
-        score = score - m - l - c;
+        score = (int) Sum_Score(score,l,m,c);
+
 
         List<Integer> logs = new ArrayList<>();
         ArrayList<PieEntry> entries = new ArrayList<>();
@@ -278,3 +316,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
+

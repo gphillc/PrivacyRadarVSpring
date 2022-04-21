@@ -15,9 +15,9 @@
     <color name="lightIcon">#000000</color>
     <color name="lightSecondaryBackup">#468189</color>
 
-    <color name="lightCamera">#40C4FF</color>
-    <color name="lightMicrophone">#FFCC80</color>
-    <color name="lightLocation">#A5D6A7</color>
+    <color name="lightCamera">#73FF40</color>
+    <color name="lightMicrophone">#FDE300</color>
+    <color name="lightLocation">#F31717</color>
 
     <!--Dark Theme-->
     <color name="darkPrimary">#CD0955</color>
